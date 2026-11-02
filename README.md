@@ -1,14 +1,3 @@
----
-
-title: AccessLens
-emoji: 🔎
-colorFrom: blue
-colorTo: indigo
-sdk: docker
-app_port: 7860
-pinned: false
--------------
-
 # AccessLens
 
 ### AI-Powered Website Accessibility Analysis & Remediation

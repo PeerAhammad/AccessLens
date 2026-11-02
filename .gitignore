@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+backend/scans/
+node_modules/
+.env

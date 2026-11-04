@@ -1,0 +1,1093 @@
+{
+ "scan_id": "eaeb960f",
+ "analyses": [
+  {
+   "finding_id": "image-alt:al62",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of ignoring the decorative border element.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al62",
+    "al_id": "al62",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML: <img height=\"10px\" src=\"./img/border_left_top.gif\" width=\"10px\"/>",
+   "original_html": "<img height=\"10px\" src=\"./img/border_left_top.gif\" width=\"10px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"10px\" src=\"./img/border_left_top.gif\" width=\"10px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al64",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of ignoring the decorative border element.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al64",
+    "al_id": "al64",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML: <img height=\"10px\" src=\"./img/border_top.gif\"/>",
+   "original_html": "<img height=\"10px\" src=\"./img/border_top.gif\"/>",
+   "proposed_html": "<img alt=\"\" height=\"10px\" src=\"./img/border_top.gif\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al66",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of ignoring the decorative border element.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al66",
+    "al_id": "al66",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML: <img height=\"10px\" src=\"./img/border_right_top.gif\" width=\"10px\"/>",
+   "original_html": "<img height=\"10px\" src=\"./img/border_right_top.gif\" width=\"10px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"10px\" src=\"./img/border_right_top.gif\" width=\"10px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al69",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of ignoring the decorative border element.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al69",
+    "al_id": "al69",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML: <img src=\"./img/border_left.gif\" width=\"10px\"/>",
+   "original_html": "<img src=\"./img/border_left.gif\" width=\"10px\"/>",
+   "proposed_html": "<img alt=\"\" src=\"./img/border_left.gif\" width=\"10px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al79",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of ignoring the decorative spacer element.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al79",
+    "al_id": "al79",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML: <img height=\"86px\" src=\"./img/top_logo_next_end.gif\" width=\"24px\"/>",
+   "original_html": "<img height=\"86px\" src=\"./img/top_logo_next_end.gif\" width=\"24px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"86px\" src=\"./img/top_logo_next_end.gif\" width=\"24px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al81",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will read the file name instead of the image content, which is confusing for users.",
+    "who": "Users who rely on screen readers.",
+    "how": "Add an alt attribute describing the weather icon."
+   },
+   "patch": {
+    "finding_id": "image-alt:al81",
+    "al_id": "al81",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "Weather icon",
+    "explanation": "Add an alt attribute describing the weather icon."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML",
+   "original_html": "<img height=\"86px\" src=\"./img/top_weather.gif\" width=\"128px\"/>",
+   "proposed_html": "<img alt=\"Weather icon\" height=\"86px\" src=\"./img/top_weather.gif\" width=\"128px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al83",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will read the file name instead of the image content, which is confusing for users.",
+    "who": "Users who rely on screen readers.",
+    "how": "Add an alt attribute describing the logo."
+   },
+   "patch": {
+    "finding_id": "image-alt:al83",
+    "al_id": "al83",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "Logo",
+    "explanation": "Add an alt attribute describing the logo."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML",
+   "original_html": "<img height=\"86px\" src=\"./img/top_logo_next_start.gif\" width=\"22px\"/>",
+   "proposed_html": "<img alt=\"Logo\" height=\"86px\" src=\"./img/top_logo_next_start.gif\" width=\"22px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al104",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "This appears to be a decorative line or spacer, so it should be hidden from screen readers.",
+    "who": "Users who rely on screen readers.",
+    "how": "Add an empty alt attribute to mark it as decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al104",
+    "al_id": "al104",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to mark it as decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML",
+   "original_html": "<img height=\"7px\" src=\"./img/mark.gif\" width=\"158px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"7px\" src=\"./img/mark.gif\" width=\"158px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al119",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "This appears to be a decorative line or spacer, so it should be hidden from screen readers.",
+    "who": "Users who rely on screen readers.",
+    "how": "Add an empty alt attribute to mark it as decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al119",
+    "al_id": "al119",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to mark it as decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML",
+   "original_html": "<img height=\"1px\" src=\".img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\".img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al130",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "This appears to be a decorative line or spacer, so it should be hidden from screen readers.",
+    "who": "Users who rely on screen readers.",
+    "how": "Add an empty alt attribute to mark it as decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al130",
+    "al_id": "al130",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to mark it as decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element HTML",
+   "original_html": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al132",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need an alt attribute to understand the image's purpose or to ignore it if it is decorative.",
+    "who": "Users who rely on screen readers.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al132",
+    "al_id": "al132",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "The image is a 1x30 pixel spacer gif used for layout.",
+   "original_html": "<img height=\"30px\" src=\"./img/marker2_t.gif\" width=\"1\"/>",
+   "proposed_html": "<img alt=\"\" height=\"30px\" src=\"./img/marker2_t.gif\" width=\"1\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al136",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need an alt attribute to describe the function of the link.",
+    "who": "Users who rely on screen readers.",
+    "how": "Add an alt attribute that describes the link's destination."
+   },
+   "patch": {
+    "finding_id": "image-alt:al136",
+    "al_id": "al136",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "Home",
+    "explanation": "Add an alt attribute that describes the link's destination."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "The image contains an icon of a building and the text 'HOME'.",
+   "original_html": "<img border=\"0px\" height=\"27\" hspace=\"15\" name=\"nav_home\" src=\"./img/nav_home.gif\" width=\"88\"/>",
+   "proposed_html": "<img alt=\"Home\" border=\"0px\" height=\"27\" hspace=\"15\" name=\"nav_home\" src=\"./img/nav_home.gif\" width=\"88\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al139",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image lacks an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Screen reader users.",
+    "how": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch": {
+    "finding_id": "image-alt:al139",
+    "al_id": "al139",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al143",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The navigation image lacks an alt attribute.",
+    "why": "Screen reader users will not know the function of the link.",
+    "who": "Screen reader users.",
+    "how": "Add an alt attribute describing the link destination, which is News."
+   },
+   "patch": {
+    "finding_id": "image-alt:al143",
+    "al_id": "al143",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "News",
+    "explanation": "Add an alt attribute describing the link destination, which is News."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img border=\"0px\" height=\"21\" hspace=\"12\" name=\"nav_news\" src=\"./img/nav_news.gif\" width=\"90\"/>",
+   "proposed_html": "<img alt=\"News\" border=\"0px\" height=\"21\" hspace=\"12\" name=\"nav_news\" src=\"./img/nav_news.gif\" width=\"90\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al146",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image lacks an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Screen reader users.",
+    "how": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch": {
+    "finding_id": "image-alt:al146",
+    "al_id": "al146",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al150",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The navigation image lacks an alt attribute.",
+    "why": "Screen reader users will not know the function of the link.",
+    "who": "Screen reader users.",
+    "how": "Add an alt attribute describing the link destination, which is Facts."
+   },
+   "patch": {
+    "finding_id": "image-alt:al150",
+    "al_id": "al150",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "Facts",
+    "explanation": "Add an alt attribute describing the link destination, which is Facts."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img border=\"0px\" height=\"23\" hspace=\"9\" name=\"nav_facts\" src=\"./img/nav_facts.gif\" width=\"105\"/>",
+   "proposed_html": "<img alt=\"Facts\" border=\"0px\" height=\"23\" hspace=\"9\" name=\"nav_facts\" src=\"./img/nav_facts.gif\" width=\"105\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al153",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image lacks an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Screen reader users.",
+    "how": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch": {
+    "finding_id": "image-alt:al153",
+    "al_id": "al153",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al157",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The navigation image lacks an alt attribute.",
+    "why": "Screen reader users will not know the function of the link.",
+    "who": "Screen reader users.",
+    "how": "Add an alt attribute describing the link destination, which is Survey."
+   },
+   "patch": {
+    "finding_id": "image-alt:al157",
+    "al_id": "al157",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "Survey",
+    "explanation": "Add an alt attribute describing the link destination, which is Survey."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img border=\"0px\" height=\"32\" hspace=\"8\" name=\"nav_survey\" src=\"./img/nav_survey.gif\" width=\"107\"/>",
+   "proposed_html": "<img alt=\"Survey\" border=\"0px\" height=\"32\" hspace=\"8\" name=\"nav_survey\" src=\"./img/nav_survey.gif\" width=\"107\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al160",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image lacks an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Screen reader users.",
+    "how": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch": {
+    "finding_id": "image-alt:al160",
+    "al_id": "al160",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute since this appears to be a decorative spacer image."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al162",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al162",
+    "al_id": "al162",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"5px\" src=\"./img/blank_5x5.gif\" width=\"20px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"5px\" src=\"./img/blank_5x5.gif\" width=\"20px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al171",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al171",
+    "al_id": "al171",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img align=\"absmiddle\" height=\"24\" src=\"./img/headline_middle.gif\" width=\"23\"/>",
+   "proposed_html": "<img align=\"absmiddle\" alt=\"\" height=\"24\" src=\"./img/headline_middle.gif\" width=\"23\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al174",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al174",
+    "al_id": "al174",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img align=\"absmiddle\" height=\"24\" src=\"./img/headline_middle.gif\" width=\"23\"/>",
+   "proposed_html": "<img align=\"absmiddle\" alt=\"\" height=\"24\" src=\"./img/headline_middle.gif\" width=\"23\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al177",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al177",
+    "al_id": "al177",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img align=\"absmiddle\" height=\"24\" src=\"./img/headline_middle.gif\" width=\"23\"/>",
+   "proposed_html": "<img align=\"absmiddle\" alt=\"\" height=\"24\" src=\"./img/headline_middle.gif\" width=\"23\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al219",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al219",
+    "al_id": "al219",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"5px\" src=\"./img/blank_5x5.gif\" width=\"20px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"5px\" src=\"./img/blank_5x5.gif\" width=\"20px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al225",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al225",
+    "al_id": "al225",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"30px\" src=\"./img/marker2_t.gif\" width=\"1px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"30px\" src=\"./img/marker2_t.gif\" width=\"1px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al227",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name instead of the image's purpose.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch": {
+    "finding_id": "image-alt:al227",
+    "al_id": "al227",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to indicate the image is decorative."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al235",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers will announce the file name, which is not helpful for users.",
+    "who": "Users who are blind or have low vision.",
+    "how": "Provide a descriptive alt text for the image content."
+   },
+   "patch": null,
+   "patch_source": "none",
+   "confidence": "low",
+   "needs_human_review": true,
+   "evidence": "Element does not have an alt attribute",
+   "original_html": "<img height=\"106px\" src=\"./img/teaser_right1.jpg\" width=\"150px\"/>",
+   "proposed_html": null,
+   "note": "Model found insufficient evidence for a fix"
+  },
+  {
+   "finding_id": "image-alt:al249",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need alt text to describe images or to know they should be ignored.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al249",
+    "al_id": "al249",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "original_html": "<img height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"1px\" src=\"./img/marker2_w.gif\" width=\"78px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al256",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need alt text to describe images or to know they should be ignored.",
+    "who": "Users of screen readers.",
+    "how": "Add an alt attribute describing the image content."
+   },
+   "patch": null,
+   "patch_source": "none",
+   "confidence": "low",
+   "needs_human_review": true,
+   "evidence": "<img height=\"154px\" src=\"./img/teaser_right2.jpg\" width=\"150px\"/>",
+   "original_html": "<img height=\"154px\" src=\"./img/teaser_right2.jpg\" width=\"150px\"/>",
+   "proposed_html": null,
+   "note": "Model found insufficient evidence for a fix"
+  },
+  {
+   "finding_id": "image-alt:al280",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need alt text to describe images or to know they should be ignored.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al280",
+    "al_id": "al280",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "<img src=\"./img/border_right.gif\" width=\"10px\"/>",
+   "original_html": "<img src=\"./img/border_right.gif\" width=\"10px\"/>",
+   "proposed_html": "<img alt=\"\" src=\"./img/border_right.gif\" width=\"10px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al283",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need alt text to describe images or to know they should be ignored.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al283",
+    "al_id": "al283",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "<img height=\"10px\" src=\"./img/border_bottom_left.gif\" width=\"10px\"/>",
+   "original_html": "<img height=\"10px\" src=\"./img/border_bottom_left.gif\" width=\"10px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"10px\" src=\"./img/border_bottom_left.gif\" width=\"10px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al285",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need alt text to describe images or to know they should be ignored.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al285",
+    "al_id": "al285",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "<img height=\"10px\" src=\"./img/border_bottom.gif\"/>",
+   "original_html": "<img height=\"10px\" src=\"./img/border_bottom.gif\"/>",
+   "proposed_html": "<img alt=\"\" height=\"10px\" src=\"./img/border_bottom.gif\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "image-alt:al287",
+   "category": "alt_text",
+   "explanation": {
+    "what": "The image is missing an alt attribute.",
+    "why": "Screen readers need alt text to describe images or to know they should be ignored.",
+    "who": "Users of screen readers.",
+    "how": "Add an empty alt attribute to the image tag."
+   },
+   "patch": {
+    "finding_id": "image-alt:al287",
+    "al_id": "al287",
+    "op": "set_attribute",
+    "name": "alt",
+    "value": "",
+    "explanation": "Add an empty alt attribute to the image tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "<img height=\"10px\" src=\"./img/border_bottom_right.gif\" width=\"10px\"/>",
+   "original_html": "<img height=\"10px\" src=\"./img/border_bottom_right.gif\" width=\"10px\"/>",
+   "proposed_html": "<img alt=\"\" height=\"10px\" src=\"./img/border_bottom_right.gif\" width=\"10px\"/>",
+   "note": ""
+  },
+  {
+   "finding_id": "select-name:al85",
+   "category": "form_label",
+   "explanation": {
+    "what": "The select element lacks an accessible name.",
+    "why": "Screen readers need a label to announce the purpose of the form control.",
+    "who": "Users of screen readers.",
+    "how": "Add an aria-label attribute to the select element."
+   },
+   "patch": {
+    "finding_id": "select-name:al85",
+    "al_id": "al85",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "Quick menu",
+    "explanation": "Add an aria-label attribute to the select element."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "<select onchange=\"location.href = this.value;\">",
+   "original_html": "<select onchange=\"location.href = this.value;\">\n<option selected=\"\">QUICKMENU ----&gt;\n            </option><option value=\"../offsite.html\">Broadcasting\n            </option><option value=\"../offsite.html\">Education\n            </option><option value=\"../offsite.html\">Electricity\n            </option><option value=\"../offsite.html\">Fire service\n            </option><option value=\"../offsite.html\">Gas service\n            </option><option value=\"../offsite.html\">Health care\n            </option><option value=\"../offsite.html\">Police service\n            </option><option value=\"../offsite.html\">Public Libraries\n            </option><option value=\"../offsite.html\">Social services\n            </option><option value=\"../offsite.html\">Social housing\n            </option><option value=\"../offsite.h",
+   "proposed_html": "<select aria-label=\"Quick menu\" onchange=\"location.href = this.value;\">\n<option selected=\"\">QUICKMENU ----&gt;\n            </option><option value=\"../offsite.html\">Broadcasting\n            </option><option value=\"../offsite.html\">Education\n            </option><option value=\"../offsite.html\">Electricity\n            </option><option value=\"../offsite.html\">Fire service\n            </option><option value=\"../offsite.html\">Gas service\n            </option><option value=\"../offsite.html\">Health care\n            </option><option value=\"../offsite.html\">Police service\n            </option><option value=\"../offsite.html\">Public Libraries\n            </option><option value=\"../offsite.html\">Social services\n            </option><option value=\"../offsite.html\">Social housing\n            </option><op",
+   "note": ""
+  },
+  {
+   "finding_id": "color-contrast:al231",
+   "category": "contrast",
+   "explanation": {
+    "what": "The text color does not meet the minimum contrast ratio against its background.",
+    "why": "Users with low vision may struggle to read the text.",
+    "who": "Users with visual impairments.",
+    "how": "Increase the contrast by darkening the text color or lightening the background color."
+   },
+   "patch": {
+    "finding_id": "color-contrast:al231",
+    "al_id": "al231",
+    "op": "add_style",
+    "name": null,
+    "value": "color: #394951",
+    "explanation": "Changed text color #41545d to #394951 on background #a9b8bf to reach the required 4.5:1 contrast ratio."
+   },
+   "patch_source": "deterministic",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element has insufficient color contrast of 3.88 (foreground color: #41545d, background color: #a9b8bf, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1",
+   "original_html": "<b>Free Penguins</b>",
+   "proposed_html": "<b style=\"color: #394951\">Free Penguins</b>",
+   "note": ""
+  },
+  {
+   "finding_id": "color-contrast:al253",
+   "category": "contrast",
+   "explanation": {
+    "what": "The text color does not meet the minimum contrast ratio against its background.",
+    "why": "Users with low vision may struggle to read the text.",
+    "who": "Users with visual impairments.",
+    "how": "Increase the contrast by darkening the text color or lightening the background color."
+   },
+   "patch": {
+    "finding_id": "color-contrast:al253",
+    "al_id": "al253",
+    "op": "add_style",
+    "name": null,
+    "value": "color: #394951",
+    "explanation": "Changed text color #41545d to #394951 on background #a9b8bf to reach the required 4.5:1 contrast ratio."
+   },
+   "patch_source": "deterministic",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "Element has insufficient color contrast of 3.88 (foreground color: #41545d, background color: #a9b8bf, font size: 9.8pt (13px), font weight: bold). Expected contrast ratio of 4.5:1",
+   "original_html": "<b>More City Parks</b>",
+   "proposed_html": "<b style=\"color: #394951\">More City Parks</b>",
+   "note": ""
+  },
+  {
+   "finding_id": "html-has-lang:al0",
+   "category": "language",
+   "explanation": {
+    "what": "The html element is missing a lang attribute.",
+    "why": "Assistive technologies use the language attribute to determine the correct pronunciation and character set.",
+    "who": "Users of screen readers.",
+    "how": "Add a lang attribute to the html tag."
+   },
+   "patch": {
+    "finding_id": "html-has-lang:al0",
+    "al_id": "al0",
+    "op": "set_attribute",
+    "name": "lang",
+    "value": "en",
+    "explanation": "Add a lang attribute to the html tag."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "<html><head>",
+   "original_html": "<html>",
+   "proposed_html": "<html lang=\"en\">",
+   "note": ""
+  },
+  {
+   "finding_id": "link-name:al135",
+   "category": "empty_name",
+   "explanation": {
+    "what": "The link contains an image without descriptive text.",
+    "why": "Screen reader users cannot identify the purpose of the link.",
+    "who": "Users relying on assistive technology.",
+    "how": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch": {
+    "finding_id": "link-name:al135",
+    "al_id": "al135",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "Home",
+    "explanation": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element_html",
+   "original_html": "<a href=\"javascript:location.href='home.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"27\" hspace=\"15\" name=\"nav_home\" src=\"./img/nav_home.gif\" width=\"88\"/></a>",
+   "proposed_html": "<a aria-label=\"Home\" href=\"javascript:location.href='home.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"27\" hspace=\"15\" name=\"nav_home\" src=\"./img/nav_home.gif\" width=\"88\"/></a>",
+   "note": ""
+  },
+  {
+   "finding_id": "link-name:al142",
+   "category": "empty_name",
+   "explanation": {
+    "what": "The link contains an image without descriptive text.",
+    "why": "Screen reader users cannot identify the purpose of the link.",
+    "who": "Users relying on assistive technology.",
+    "how": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch": {
+    "finding_id": "link-name:al142",
+    "al_id": "al142",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "News",
+    "explanation": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element_html",
+   "original_html": "<a href=\"javascript:location.href='news.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"21\" hspace=\"12\" name=\"nav_news\" src=\"./img/nav_news.gif\" width=\"90\"/></a>",
+   "proposed_html": "<a aria-label=\"News\" href=\"javascript:location.href='news.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"21\" hspace=\"12\" name=\"nav_news\" src=\"./img/nav_news.gif\" width=\"90\"/></a>",
+   "note": ""
+  },
+  {
+   "finding_id": "link-name:al149",
+   "category": "empty_name",
+   "explanation": {
+    "what": "The link contains an image without descriptive text.",
+    "why": "Screen reader users cannot identify the purpose of the link.",
+    "who": "Users relying on assistive technology.",
+    "how": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch": {
+    "finding_id": "link-name:al149",
+    "al_id": "al149",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "Tickets",
+    "explanation": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element_html",
+   "original_html": "<a href=\"javascript:location.href='tickets.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"23\" hspace=\"9\" name=\"nav_facts\" src=\"./img/nav_facts.gif\" width=\"105\"/></a>",
+   "proposed_html": "<a aria-label=\"Tickets\" href=\"javascript:location.href='tickets.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"23\" hspace=\"9\" name=\"nav_facts\" src=\"./img/nav_facts.gif\" width=\"105\"/></a>",
+   "note": ""
+  },
+  {
+   "finding_id": "link-name:al156",
+   "category": "empty_name",
+   "explanation": {
+    "what": "The link contains an image without descriptive text.",
+    "why": "Screen reader users cannot identify the purpose of the link.",
+    "who": "Users relying on assistive technology.",
+    "how": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch": {
+    "finding_id": "link-name:al156",
+    "al_id": "al156",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "Survey",
+    "explanation": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch_source": "llm",
+   "confidence": "high",
+   "needs_human_review": false,
+   "evidence": "element_html",
+   "original_html": "<a href=\"javascript:location.href='survey.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"32\" hspace=\"8\" name=\"nav_survey\" src=\"./img/nav_survey.gif\" width=\"107\"/></a>",
+   "proposed_html": "<a aria-label=\"Survey\" href=\"javascript:location.href='survey.html';\" onfocus=\"blur();\"><img border=\"0px\" height=\"32\" hspace=\"8\" name=\"nav_survey\" src=\"./img/nav_survey.gif\" width=\"107\"/></a>",
+   "note": ""
+  },
+  {
+   "finding_id": "link-name:al193",
+   "category": "empty_name",
+   "explanation": {
+    "what": "The link contains an image without descriptive text.",
+    "why": "Screen reader users cannot identify the purpose of the link.",
+    "who": "Users relying on assistive technology.",
+    "how": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch": {
+    "finding_id": "link-name:al193",
+    "al_id": "al193",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "Read more news",
+    "explanation": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "element_html",
+   "original_html": "<a href=\"news.html\" onfocus=\"blur();\"><img alt=\"\" border=\"0\" height=\"10\" onmouseout=\"this.src='./img/morearrow.gif'\" onmouseover=\"this.src='./img/morearrow_a.gif'\" src=\"./img/morearrow.gif\" style=\"vertical-align: bottom\" width=\"48\"/></a>",
+   "proposed_html": "<a aria-label=\"Read more news\" href=\"news.html\" onfocus=\"blur();\"><img alt=\"\" border=\"0\" height=\"10\" onmouseout=\"this.src='./img/morearrow.gif'\" onmouseover=\"this.src='./img/morearrow_a.gif'\" src=\"./img/morearrow.gif\" style=\"vertical-align: bottom\" width=\"48\"/></a>",
+   "note": ""
+  },
+  {
+   "finding_id": "link-name:al197",
+   "category": "empty_name",
+   "explanation": {
+    "what": "The link contains an image without descriptive text.",
+    "why": "Screen reader users cannot identify the purpose of the link.",
+    "who": "Users relying on assistive technology.",
+    "how": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch": {
+    "finding_id": "link-name:al197",
+    "al_id": "al197",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "Read more news",
+    "explanation": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "element_html",
+   "original_html": "<a href=\"news.html\" onfocus=\"blur();\"><img alt=\"\" border=\"0\" height=\"10\" onmouseout=\"this.src='./img/morearrow.gif'\" onmouseover=\"this.src='./img/morearrow_a.gif'\" src=\"./img/morearrow.gif\" style=\"vertical-align: bottom\" width=\"48\"/></a>",
+   "proposed_html": "<a aria-label=\"Read more news\" href=\"news.html\" onfocus=\"blur();\"><img alt=\"\" border=\"0\" height=\"10\" onmouseout=\"this.src='./img/morearrow.gif'\" onmouseover=\"this.src='./img/morearrow_a.gif'\" src=\"./img/morearrow.gif\" style=\"vertical-align: bottom\" width=\"48\"/></a>",
+   "note": ""
+  },
+  {
+   "finding_id": "link-name:al201",
+   "category": "empty_name",
+   "explanation": {
+    "what": "The link contains an image without descriptive text.",
+    "why": "Screen reader users cannot identify the purpose of the link.",
+    "who": "Users relying on assistive technology.",
+    "how": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch": {
+    "finding_id": "link-name:al201",
+    "al_id": "al201",
+    "op": "set_attribute",
+    "name": "aria-label",
+    "value": "Read more news",
+    "explanation": "Add an aria-label attribute to the anchor tag describing the destination."
+   },
+   "patch_source": "llm",
+   "confidence": "medium",
+   "needs_human_review": false,
+   "evidence": "element_html",
+   "original_html": "<a href=\"news.html\" onfocus=\"blur();\"><img alt=\"\" border=\"0\" height=\"10\" onmouseout=\"this.src='./img/morearrow.gif'\" onmouseover=\"this.src='./img/morearrow_a.gif'\" src=\"./img/morearrow.gif\" style=\"vertical-align: bottom\" width=\"48\"/></a>",
+   "proposed_html": "<a aria-label=\"Read more news\" href=\"news.html\" onfocus=\"blur();\"><img alt=\"\" border=\"0\" height=\"10\" onmouseout=\"this.src='./img/morearrow.gif'\" onmouseover=\"this.src='./img/morearrow_a.gif'\" src=\"./img/morearrow.gif\" style=\"vertical-align: bottom\" width=\"48\"/></a>",
+   "note": ""
+  }
+ ],
+ "source": "cache",
+ "cached_at": "2026-11-04"
+}

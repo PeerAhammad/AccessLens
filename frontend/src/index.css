@@ -1,5 +1,55 @@
 @import "tailwindcss";
 
-:root { color-scheme: dark; }
-body { background: #0b1220; color: #e2e8f0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
+/* class-based dark mode: <html class="dark"> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic colour tokens (light is the default; .dark restores the dark look) */
+:root {
+  --c-canvas: #f4f7fb;
+  --c-surface: #ffffff;
+  --c-surface-2: #eef2f7;
+  --c-line: #dbe3ee;
+  --c-line-strong: #b9c6d8;
+  --c-ink: #0f172a;
+  --c-ink-2: #334155;
+  --c-ink-3: #526077;
+  --c-brand: #0f766e;
+  --c-brand-ink: #ffffff;
+  --c-brand-text: #0f766e;
+  color-scheme: light;
+}
+:root.dark {
+  --c-canvas: #0b1220;
+  --c-surface: #0f172a;
+  --c-surface-2: #1e293b;
+  --c-line: #1e293b;
+  --c-line-strong: #334155;
+  --c-ink: #f1f5f9;
+  --c-ink-2: #cbd5e1;
+  --c-ink-3: #94a3b8;
+  --c-brand: #22d3ee;
+  --c-brand-ink: #0f172a;
+  --c-brand-text: #67e8f9;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: var(--c-canvas);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-ink-3: var(--c-ink-3);
+  --color-brand: var(--c-brand);
+  --color-brand-ink: var(--c-brand-ink);
+  --color-brand-text: var(--c-brand-text);
+}
+
+body {
+  background: var(--c-canvas);
+  color: var(--c-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+:focus-visible { outline: 2px solid var(--c-brand); outline-offset: 2px; }

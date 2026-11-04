@@ -17,12 +17,12 @@ export default function Summary({ findings, analyses }: { findings: Finding[]; a
 
 function Card({ label, value, dot, accent }: { label: string; value: number; dot?: string; accent?: boolean }) {
   return (
-    <div className={`rounded-xl border p-4 ${accent ? "border-cyan-500/40 bg-cyan-500/5" : "border-slate-800 bg-slate-900/60"}`}>
-      <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-400">
+    <div className={`rounded-xl border p-4 ${accent ? "border-brand/40 bg-brand/5" : "border-line bg-surface"}`}>
+      <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-ink-3">
         {dot && <span className={`h-2 w-2 rounded-full ${dot}`} />}
         {label}
       </div>
-      <div className="mt-1 text-3xl font-semibold text-slate-100">{value}</div>
+      <div className="mt-1 text-3xl font-semibold text-ink">{value}</div>
     </div>
   );
 }

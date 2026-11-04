@@ -84,3 +84,19 @@ so Render's free 512 MB tier is too small.
 - Chromium runs with `--no-sandbox` inside the container (the container is the isolation boundary).
 - SSRF guard resolves DNS then connects (DNS-rebinding gap); scans and results are held in memory and lost on restart.
 - Scans a single page with scripts enabled; verification runs on a script-free snapshot, so JS-driven UI states are not covered.
+
+## Static demo (free hosting, no server)
+A free static host cannot run Chromium, so `npm run build:demo` produces a backend-free site that replays a REAL recorded run
+(scan + AI analysis + verification) of the W3C "before" demo page. The page labels itself as a recording.
+
+    cd backend
+    python export_demo.py            # records the run into frontend/public/demo (uses the analysis cache; verification runs live)
+    cd ../frontend
+    npm run build:demo               # output in frontend/dist (relative paths; any static host)
+
+Host `frontend/dist` on a Hugging Face *Static* Space, Netlify Drop, or GitHub Pages. The live app (scan any URL) is the Docker image.
+
+## Theme and accessibility of the app itself
+Light theme by default with a dark-mode toggle (preference stored in the browser). The interface was spot-checked with axe-core
+(WCAG 2.0/2.1 A and AA rules, including colour contrast) on the landing, review and report pages in both themes using sample data:
+no violations. This is an automated check only; it is not a full accessibility audit.

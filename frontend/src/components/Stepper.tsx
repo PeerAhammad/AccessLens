@@ -15,13 +15,13 @@ export default function Stepper({ phase }: { phase: Phase }) {
           <li key={label} className="flex items-center gap-2" aria-current={active ? "step" : undefined}>
             <span
               className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold ${
-                done ? "bg-cyan-400 text-slate-900" : active ? "bg-cyan-500/20 text-cyan-300 ring-1 ring-cyan-400" : "bg-slate-800 text-slate-500"
+                done ? "bg-brand text-brand-ink" : active ? "bg-brand/15 text-brand-text ring-1 ring-brand" : "bg-surface-2 text-ink-3"
               }`}
             >
               {done ? "✓" : i + 1}
             </span>
-            <span className={active ? "text-slate-100" : done ? "text-slate-300" : "text-slate-500"}>{label}</span>
-            {i < STEPS.length - 1 && <span className="mx-1 text-slate-700">—</span>}
+            <span className={active ? "text-ink" : done ? "text-ink-2" : "text-ink-3"}>{label}</span>
+            {i < STEPS.length - 1 && <span className="mx-1 text-line-strong">—</span>}
           </li>
         );
       })}

@@ -18,8 +18,8 @@ export default function ScreenshotOverlay({
   if (!src) return null;
   const visible = scan.findings.filter((f) => f.bbox);
   return (
-    <figure className="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
-      <figcaption className="mb-2 flex items-center justify-between text-xs text-slate-400">
+    <figure className="rounded-xl border border-line bg-surface shadow-sm p-3">
+      <figcaption className="mb-2 flex items-center justify-between text-xs text-ink-3">
         <span>Page screenshot (top of page) — click a box to inspect an issue</span>
         <span>{visible.length} highlighted</span>
       </figcaption>

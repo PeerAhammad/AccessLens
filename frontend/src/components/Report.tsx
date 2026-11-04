@@ -48,17 +48,17 @@ export default function Report({
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-2xl font-semibold text-slate-100">Verification report</h2>
-          <p className="text-sm text-slate-400">{scan.url}</p>
+          <h2 className="text-2xl font-semibold text-ink">Verification report</h2>
+          <p className="text-sm text-ink-3">{scan.url}</p>
         </div>
         <div className="flex gap-2">
-          <button onClick={onBack} className="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-200 hover:border-cyan-400">
+          <button onClick={onBack} className="rounded-lg border border-line-strong px-4 py-2 text-sm text-ink hover:border-brand">
             ← Back to review
           </button>
-          <button onClick={download} className="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-200 hover:border-cyan-400">
+          <button onClick={download} className="rounded-lg border border-line-strong px-4 py-2 text-sm text-ink hover:border-brand">
             Download JSON
           </button>
-          <button onClick={onReset} className="rounded-lg bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-cyan-300">
+          <button onClick={onReset} className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-brand-ink hover:bg-brand/90">
             Scan another page
           </button>
         </div>
@@ -71,30 +71,30 @@ export default function Report({
         <Stat label="Still failing" value={result.remaining.length} tone="warn" />
         <Stat label="Newly introduced" value={result.introduced.length} tone={result.introduced.length ? "bad" : "good"} />
       </div>
-      <p className="text-slate-300">
+      <p className="text-ink-2">
         {result.resolved.length} of {result.before_count} detected issues ({reduction}%) no longer fail automated checks after the {applied.length} approved
         change{applied.length === 1 ? "" : "s"}.{" "}
         {result.introduced.length === 0 ? "No new violations were introduced." : `${result.introduced.length} new violation(s) appeared and need attention.`}
       </p>
 
       {result.failed_ops.length > 0 && (
-        <p className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-200">
+        <p className="rounded-lg border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">
           {result.failed_ops.length} change(s) could not be applied because their target element was not found.
         </p>
       )}
 
-      <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">Issues by category</h3>
+      <div className="rounded-xl border border-line bg-surface shadow-sm p-4">
+        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-ink-3">Issues by category</h3>
         <div style={{ width: "100%", height: 280 }}>
           <ResponsiveContainer>
             <BarChart data={chart} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-              <XAxis dataKey="category" tick={{ fill: "#94a3b8", fontSize: 12 }} />
-              <YAxis allowDecimals={false} tick={{ fill: "#94a3b8", fontSize: 12 }} />
-              <Tooltip contentStyle={{ background: "#0f172a", border: "1px solid #334155", color: "#e2e8f0" }} />
-              <Legend />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--c-line)" />
+              <XAxis dataKey="category" tick={{ fill: "var(--c-ink-3)", fontSize: 12 }} />
+              <YAxis allowDecimals={false} tick={{ fill: "var(--c-ink-3)", fontSize: 12 }} />
+              <Tooltip contentStyle={{ background: "var(--c-surface)", border: "1px solid var(--c-line-strong)", color: "var(--c-ink)" }} />
+              <Legend wrapperStyle={{ color: "var(--c-ink-2)" }} />
               <Bar dataKey="Before" fill="#f97316" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="After" fill="#22d3ee" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="After" fill="var(--c-brand)" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -106,13 +106,13 @@ export default function Report({
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <IdList title="Resolved" ids={result.resolved} tone="text-emerald-300" label={label} analyses={analyses} />
-        <IdList title="Still failing" ids={result.remaining} tone="text-amber-300" label={label} analyses={analyses} />
-        <IdList title="Newly introduced" ids={result.introduced} tone="text-red-300" label={label} analyses={analyses} />
+        <IdList title="Resolved" ids={result.resolved} tone="text-emerald-700 dark:text-emerald-300" label={label} analyses={analyses} />
+        <IdList title="Still failing" ids={result.remaining} tone="text-amber-700 dark:text-amber-300" label={label} analyses={analyses} />
+        <IdList title="Newly introduced" ids={result.introduced} tone="text-red-700 dark:text-red-300" label={label} analyses={analyses} />
       </div>
 
-      <aside className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 text-sm text-slate-400">
-        <strong className="text-slate-200">What this verification means.</strong> Results come from re-running axe-core on an isolated, script-free copy of the
+      <aside className="rounded-xl border border-line bg-surface shadow-sm p-4 text-sm text-ink-3">
+        <strong className="text-ink">What this verification means.</strong> Results come from re-running axe-core on an isolated, script-free copy of the
         page with your approved changes applied. This confirms the detected rule violations are gone — it does not prove WCAG compliance, and it cannot judge
         whether AI-written text (such as alt text) is actually good. Review wording yourself and test with real assistive technology. The live website was never
         modified.
@@ -122,10 +122,10 @@ export default function Report({
 }
 
 function Stat({ label, value, tone }: { label: string; value: number; tone?: "good" | "warn" | "bad" }) {
-  const c = tone === "good" ? "text-emerald-300" : tone === "warn" ? "text-amber-300" : tone === "bad" ? "text-red-300" : "text-slate-100";
+  const c = tone === "good" ? "text-emerald-700 dark:text-emerald-300" : tone === "warn" ? "text-amber-700 dark:text-amber-300" : tone === "bad" ? "text-red-700 dark:text-red-300" : "text-ink";
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-      <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
+    <div className="rounded-xl border border-line bg-surface shadow-sm p-4">
+      <div className="text-xs uppercase tracking-wide text-ink-3">{label}</div>
       <div className={`mt-1 text-3xl font-semibold ${c}`}>{value}</div>
     </div>
   );
@@ -133,8 +133,8 @@ function Stat({ label, value, tone }: { label: string; value: number; tone?: "go
 
 function Shot({ title, src }: { title: string; src: string }) {
   return (
-    <figure className="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
-      <figcaption className="mb-2 text-xs uppercase tracking-wide text-slate-400">{title}</figcaption>
+    <figure className="rounded-xl border border-line bg-surface shadow-sm p-3">
+      <figcaption className="mb-2 text-xs uppercase tracking-wide text-ink-3">{title}</figcaption>
       <img src={src} alt={`${title} screenshot`} className="w-full rounded bg-white" />
     </figure>
   );
@@ -154,20 +154,20 @@ function IdList({
   analyses: Map<string, FindingAnalysis>;
 }) {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+    <div className="rounded-xl border border-line bg-surface shadow-sm p-4">
       <h3 className={`mb-2 text-sm font-semibold ${tone}`}>
         {title} ({ids.length})
       </h3>
       {ids.length === 0 ? (
-        <p className="text-sm text-slate-500">None</p>
+        <p className="text-sm text-ink-3">None</p>
       ) : (
-        <ul className="max-h-60 space-y-1 overflow-auto text-sm text-slate-300">
+        <ul className="max-h-60 space-y-1 overflow-auto text-sm text-ink-2">
           {ids.map((id) => {
             const p = analyses.get(id)?.patch;
             return (
               <li key={id} className="truncate" title={id}>
-                {label(id)} <span className="font-mono text-xs text-slate-500">{id.split(":")[1]}</span>
-                {p && p.op === "set_attribute" && p.value && <span className="text-slate-400"> — “{p.value}”</span>}
+                {label(id)} <span className="font-mono text-xs text-ink-3">{id.split(":")[1]}</span>
+                {p && p.op === "set_attribute" && p.value && <span className="text-ink-3"> — “{p.value}”</span>}
               </li>
             );
           })}

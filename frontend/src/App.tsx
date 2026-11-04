@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { analyze, scanUrl, verify } from "./api";
+import { useEffect, useMemo, useState } from "react";
+import { DEMO, analyze, scanUrl, verify } from "./api";
 import type { FindingAnalysis, PatchOp, ScanResult, VerifyResult } from "./types";
 import Stepper, { type Phase } from "./components/Stepper";
 import ScanForm from "./components/ScanForm";
@@ -21,6 +21,22 @@ export default function App() {
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [result, setResult] = useState<VerifyResult | null>(null);
   const [applied, setApplied] = useState<PatchOp[]>([]);
+
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    try {
+      return localStorage.getItem("accesslens-theme") === "dark" ? "dark" : "light";
+    } catch {
+      return "light";
+    }
+  });
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    try {
+      localStorage.setItem("accesslens-theme", theme);
+    } catch {
+      /* ignore */
+    }
+  }, [theme]);
 
   const busy = phase === "scanning" || phase === "analyzing" || phase === "verifying";
   const selectedFinding = scan?.findings.find((f) => f.id === selected) ?? null;
@@ -47,6 +63,7 @@ export default function App() {
         const a = await analyze(s.scan_id);
         setAnalyses(new Map(a.analyses.map((x) => [x.finding_id, x])));
         setCacheInfo(a.source === "cache" ? a.cached_at ?? "earlier" : null);
+        if (DEMO) setApproved(new Set(a.analyses.filter((x) => x.patch && !x.needs_human_review).map((x) => x.finding_id)));
       } catch (e) {
         setAiNote(`AI analysis was unavailable (${(e as Error).message}). Showing raw findings only.`);
       }
@@ -108,27 +125,36 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-slate-800 bg-slate-950/60 backdrop-blur">
+      <header className="border-b border-line bg-surface/90 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4">
           <button onClick={reset} className="flex items-center gap-2 text-left">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-400 font-bold text-slate-900">A</span>
-            <span className="text-lg font-semibold text-slate-100">AccessLens</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand font-bold text-brand-ink">A</span>
+            <span className="text-lg font-semibold text-ink">AccessLens</span>
           </button>
-          {phase !== "idle" && <Stepper phase={phase} />}
+          <div className="flex flex-wrap items-center gap-4">
+            {phase !== "idle" && <Stepper phase={phase} />}
+            <button
+              onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+              aria-pressed={theme === "dark"}
+              className="rounded-lg border border-line-strong px-3 py-1.5 text-sm text-ink-2 hover:border-brand hover:text-brand-text"
+            >
+              {theme === "dark" ? "☀ Light mode" : "☾ Dark mode"}
+            </button>
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-7xl px-6 py-8">
         {error && (
-          <div role="alert" className="mb-6 rounded-lg border border-red-500/40 bg-red-500/10 p-4 text-sm text-red-200">
+          <div role="alert" className="mb-6 rounded-lg border border-red-300 dark:border-red-500/40 bg-red-50 dark:bg-red-500/10 p-4 text-sm text-red-900 dark:text-red-200">
             {error}
           </div>
         )}
 
         {phase === "idle" && (
           <section className="mx-auto flex max-w-3xl flex-col items-center py-16 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">Make the web accessible. Automatically.</h1>
-            <p className="mt-4 max-w-2xl text-lg text-slate-300">
+            <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl">Make the web accessible. Automatically.</h1>
+            <p className="mt-4 max-w-2xl text-lg text-ink-2">
               Scan a page, understand every accessibility barrier, review AI-generated fixes, and verify they actually work — before and after.
             </p>
             <div className="mt-10 w-full">
@@ -142,9 +168,9 @@ export default function App() {
                 ["Explain & fix", "AI explains each issue in plain language and proposes a minimal, validated code change."],
                 ["Verify", "Approved fixes are applied to an isolated copy and re-tested. Nothing live is ever modified."],
               ].map(([t, d]) => (
-                <li key={t} className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-                  <div className="font-semibold text-cyan-300">{t}</div>
-                  <p className="mt-1 text-sm text-slate-400">{d}</p>
+                <li key={t} className="rounded-xl border border-line bg-surface shadow-sm p-4">
+                  <div className="font-semibold text-brand-text">{t}</div>
+                  <p className="mt-1 text-sm text-ink-3">{d}</p>
                 </li>
               ))}
             </ul>
@@ -153,13 +179,13 @@ export default function App() {
 
         {(phase === "scanning" || phase === "analyzing" || phase === "verifying") && (
           <div role="status" className="mx-auto max-w-md py-24 text-center">
-            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-700 border-t-cyan-400" />
-            <p className="mt-6 text-lg text-slate-100">
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-line-strong border-t-brand" />
+            <p className="mt-6 text-lg text-ink">
               {phase === "scanning" && "Loading the page and running accessibility checks…"}
               {phase === "analyzing" && "AI is explaining issues and drafting fixes…"}
               {phase === "verifying" && "Applying approved fixes to an isolated copy and re-testing…"}
             </p>
-            <p className="mt-2 text-sm text-slate-400">
+            <p className="mt-2 text-sm text-ink-3">
               {phase === "analyzing" ? "This can take up to a minute on large pages." : "This usually takes a few seconds."}
             </p>
           </div>
@@ -169,46 +195,54 @@ export default function App() {
           <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <h2 className="text-2xl font-semibold text-slate-100">Scan results</h2>
-                <p className="text-sm text-slate-400">{scan.url}</p>
+                <h2 className="text-2xl font-semibold text-ink">Scan results</h2>
+                <p className="text-sm text-ink-3">{scan.url}</p>
               </div>
               <div className="flex flex-wrap items-center gap-2">
+                {!DEMO && (
                 <button
                   onClick={() => setApproved(new Set(recommended))}
                   disabled={recommended.length === 0}
-                  className="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-200 hover:border-cyan-400 disabled:opacity-40"
+                  className="rounded-lg border border-line-strong px-4 py-2 text-sm text-ink hover:border-brand disabled:opacity-40"
                 >
                   Approve all recommended ({recommended.length})
                 </button>
+                )}
                 <button
                   onClick={handleVerify}
                   disabled={approved.size === 0}
-                  className="rounded-lg bg-cyan-400 px-5 py-2 text-sm font-semibold text-slate-900 hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="rounded-lg bg-brand px-5 py-2 text-sm font-semibold text-brand-ink hover:bg-brand/90 disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  Apply &amp; verify ({approved.size})
+                  {DEMO ? "Show verification of the recorded run" : "Apply & verify"} ({approved.size})
                 </button>
               </div>
             </div>
 
-            {aiNote && <p className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-200">{aiNote}</p>}
+            {DEMO && (
+              <p className="rounded-lg border border-teal-200 bg-teal-50 dark:border-brand/30 dark:bg-brand/10 p-3 text-sm text-ink">
+                Static demo: this replays a real recorded run (scan, AI analysis and verification were all produced by the live app). All fixes not flagged for
+                human review are included; editing and custom approvals are available in the live app.
+              </p>
+            )}
+            {aiNote && <p className="rounded-lg border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">{aiNote}</p>}
             {cacheInfo && (
-              <p className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 p-3 text-sm text-cyan-100">
+              <p className="rounded-lg border border-teal-200 bg-teal-50 dark:border-brand/30 dark:bg-brand/10 p-3 text-sm text-ink">
                 Loaded a saved AI analysis ({cacheInfo}) for this exact page state, so no live AI call was needed. Verification below still runs live.
               </p>
             )}
             {aiFailed > 0 && (
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-200">
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">
                 <span>
                   The AI service did not return results for {aiFailed} issue{aiFailed === 1 ? "" : "s"} (usually temporary overload). Those show no proposed fix.
                 </span>
-                <button onClick={retryAnalysis} className="rounded-lg bg-amber-400 px-4 py-1.5 font-semibold text-slate-900 hover:bg-amber-300">
+                <button onClick={retryAnalysis} className="rounded-lg bg-amber-500 px-4 py-1.5 font-semibold text-slate-950 hover:bg-amber-400">
                   Retry AI analysis
                 </button>
               </div>
             )}
 
             {scan.findings.length === 0 ? (
-              <p className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-emerald-200">
+              <p className="rounded-xl border border-emerald-300 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 p-6 text-emerald-900 dark:text-emerald-200">
                 No violations were detected for the six checked categories. This does not guarantee the page is fully accessible — automated tools find only a
                 portion of real-world barriers.
               </p>
@@ -228,6 +262,7 @@ export default function App() {
                       onToggle={() => selected && toggle(selected)}
                       editValue={selected ? edits[selected] : undefined}
                       onEdit={(v) => selected && setEdits((p) => ({ ...p, [selected]: v }))}
+                      demo={DEMO}
                     />
                   </div>
                 </div>
@@ -241,7 +276,7 @@ export default function App() {
         )}
       </main>
 
-      <footer className="mx-auto max-w-7xl px-6 pb-10 text-xs text-slate-500">
+      <footer className="mx-auto max-w-7xl px-6 pb-10 text-xs text-ink-3">
         AccessLens uses automated testing (axe-core) and AI assistance. It cannot guarantee WCAG compliance — always review fixes and test with assistive technology.
       </footer>
     </div>

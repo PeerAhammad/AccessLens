@@ -1,5 +1,5 @@
 {
- "scan_id": "eaeb960f",
+ "scan_id": "9c4a67d0",
  "url": "https://www.w3.org/WAI/demos/bad/before/home.html",
  "findings": [
   {
@@ -78,7 +78,7 @@
    "html": "<img src=\"./img/border_left_top.gif\" width=\"10px\" height=\"10px\" data-al-id=\"al62\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al62.png",
+   "crop_path": "9c4a67d0_al62.png",
    "bbox": {
     "x": 240,
     "y": 199.671875,
@@ -99,7 +99,7 @@
    "html": "<img src=\"./img/border_top.gif\" height=\"10px\" data-al-id=\"al64\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al64.png",
+   "crop_path": "9c4a67d0_al64.png",
    "bbox": {
     "x": 250,
     "y": 199.671875,
@@ -120,7 +120,7 @@
    "html": "<img src=\"./img/border_right_top.gif\" width=\"10px\" height=\"10px\" data-al-id=\"al66\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al66.png",
+   "crop_path": "9c4a67d0_al66.png",
    "bbox": {
     "x": 1030,
     "y": 199.671875,
@@ -141,7 +141,7 @@
    "html": "<img src=\"./img/border_left.gif\" width=\"10px\" data-al-id=\"al69\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al69.png",
+   "crop_path": "9c4a67d0_al69.png",
    "bbox": {
     "x": 240,
     "y": 585.171875,
@@ -162,7 +162,7 @@
    "html": "<img src=\"./img/top_logo_next_end.gif\" width=\"24px\" height=\"86px\" data-al-id=\"al79\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al79.png",
+   "crop_path": "9c4a67d0_al79.png",
    "bbox": {
     "x": 693,
     "y": 209.671875,
@@ -183,7 +183,7 @@
    "html": "<img src=\"./img/top_weather.gif\" width=\"128px\" height=\"86px\" data-al-id=\"al81\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al81.png",
+   "crop_path": "9c4a67d0_al81.png",
    "bbox": {
     "x": 717,
     "y": 209.671875,
@@ -204,7 +204,7 @@
    "html": "<img src=\"./img/top_logo_next_start.gif\" width=\"22px\" height=\"86px\" data-al-id=\"al83\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al83.png",
+   "crop_path": "9c4a67d0_al83.png",
    "bbox": {
     "x": 845,
     "y": 209.671875,
@@ -225,7 +225,7 @@
    "html": "<img src=\"./img/mark.gif\" width=\"158px\" height=\"7px\" data-al-id=\"al104\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al104.png",
+   "crop_path": "9c4a67d0_al104.png",
    "bbox": {
     "x": 250,
     "y": 295.671875,
@@ -246,7 +246,7 @@
    "html": "<img src=\".img/marker2_w.gif\" width=\"78px\" height=\"1px\" data-al-id=\"al119\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al119.png",
+   "crop_path": "9c4a67d0_al119.png",
    "bbox": {
     "x": 250,
     "y": 327.671875,
@@ -267,7 +267,7 @@
    "html": "<img src=\"./img/marker2_w.gif\" width=\"78px\" height=\"1px\" data-al-id=\"al130\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al130.png",
+   "crop_path": "9c4a67d0_al130.png",
    "bbox": {
     "x": 250,
     "y": 353.671875,
@@ -288,7 +288,7 @@
    "html": "<img src=\"./img/marker2_t.gif\" width=\"1\" height=\"30px\" data-al-id=\"al132\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al132.png",
+   "crop_path": "9c4a67d0_al132.png",
    "bbox": {
     "x": 404,
     "y": 353.671875,
@@ -309,7 +309,7 @@
    "html": "<img name=\"nav_home\" src=\"./img/nav_home.gif\" width=\"88\" height=\"27\" hspace=\"15\" border=\"0px\" data-al-id=\"al136\">",
    "message": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
    "help_url": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
-   "crop_path": "eaeb960f_al136.png",
+   "crop_path": "9c4a67d0_al136.png",
    "bbox": {
     "x": 265,
     "y": 358.171875,
@@ -913,5 +913,5 @@
    }
   }
  ],
- "screenshot_path": "eaeb960f.png"
+ "screenshot_path": "9c4a67d0.png"
 }

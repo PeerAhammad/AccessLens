@@ -1,5 +1,5 @@
 {
- "scan_id": "eaeb960f",
+ "scan_id": "9c4a67d0",
  "before_count": 44,
  "after_count": 2,
  "resolved": [
@@ -52,6 +52,6 @@
  ],
  "introduced": [],
  "failed_ops": [],
- "before_screenshot": "eaeb960f_before.png",
- "after_screenshot": "eaeb960f_after.png"
+ "before_screenshot": "9c4a67d0_before.png",
+ "after_screenshot": "9c4a67d0_after.png"
 }

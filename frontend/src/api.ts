@@ -28,7 +28,7 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 
 export const scanUrl = (url: string) => post<ScanResult>("/scan", { url });
 export const analyze = (scan_id: string) =>
-  post<{ scan_id: string; analyses: FindingAnalysis[] }>("/analyze", { scan_id });
+  post<{ scan_id: string; analyses: FindingAnalysis[]; source?: "live" | "cache"; cached_at?: string | null }>("/analyze", { scan_id });
 export const verify = (scan_id: string, patches: PatchOp[]) =>
   post<VerifyResult>("/verify", { scan_id, patches });
 

@@ -14,17 +14,32 @@ import json
 import os
 import pathlib
 import re
+import time
+from contextvars import ContextVar
 from typing import Any, Awaitable, Callable, Literal, Optional
 
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
+from . import cache
 from .fixes import contrast_patch
 from .patches import PatchOp, clean_html, preview_pair
 from .schemas import AnalyzeResult, Explanation, Finding, FindingAnalysis, ScanResult
 
 load_dotenv(pathlib.Path(__file__).resolve().parents[1] / ".env")   # backend/.env (git-ignored)
+
+
+DEBUG = os.environ.get("ACCESSLENS_DEBUG") == "1"
+
+
+def _dbg(msg: str) -> None:
+    if DEBUG:
+        print(f"[llm {time.strftime('%H:%M:%S')}] {msg}", flush=True)
+
+
+ANALYZE_BUDGET_S = float(os.environ.get("ACCESSLENS_ANALYZE_BUDGET_S", "120"))
+_deadline: ContextVar[Optional[float]] = ContextVar("analyze_deadline", default=None)
 
 
 def _has(*names):
@@ -118,7 +133,13 @@ async def gemini_call(system: str, user_text: str, images: Optional[list] = None
     model = model or MODEL
     from google import genai   # reads GEMINI_API_KEY (or GOOGLE_API_KEY) from the environment
     from google.genai import types
-    client = genai.Client(http_options=types.HttpOptions(timeout=90000))
+    timeout_s = float(os.environ.get("ACCESSLENS_TIMEOUT_S", "60"))
+    dl = _deadline.get()
+    if dl is not None:
+        timeout_s = max(10.0, min(timeout_s, dl - time.monotonic()))
+    client = genai.Client(http_options=types.HttpOptions(
+        timeout=int(timeout_s * 1000),
+        retry_options=types.HttpRetryOptions(attempts=1)))   # SDK-internal retries off; call_with_fallback handles retries
     parts = []
     for label, path in images or []:
         if pathlib.Path(path).exists():
@@ -153,17 +174,25 @@ def _retryable(e: Exception) -> bool:
     return any(t.lower() in str(e).lower() for t in RETRYABLE)
 
 
-async def call_with_fallback(call, models: list[str], attempts: int = 3, delay: float = 2.0) -> str:
+async def call_with_fallback(call, models: list[str], attempts: int = 2, delay: float = 2.0) -> str:
     """Try each model in order; retry transient errors (overload/rate limit); skip to the next model on 404."""
     last: Optional[Exception] = None
+    dl = _deadline.get()
     for model in models:
         for attempt in range(attempts):
+            if dl is not None and time.monotonic() >= dl:
+                raise RuntimeError("analysis time budget exceeded")
+            t0 = time.perf_counter()
             try:
-                return await call(model)
+                out = await call(model)
+                _dbg(f"{model} attempt {attempt + 1}: ok in {time.perf_counter() - t0:.1f}s")
+                return out
             except Exception as e:
                 last = e
-                if "404" in str(e) or "NOT_FOUND" in str(e):
-                    break                               # model unavailable to us: next model
+                _dbg(f"{model} attempt {attempt + 1}: FAILED after {time.perf_counter() - t0:.1f}s: {str(e)[:100]}")
+                msg = str(e)
+                if "404" in msg or "NOT_FOUND" in msg or "RESOURCE_EXHAUSTED" in msg or msg.startswith("429"):
+                    break                               # model missing or quota used up: next model, no waiting
                 if not _retryable(e):
                     raise                               # bad key / bad request: fail fast
                 await asyncio.sleep(delay * (attempt + 1))
@@ -296,7 +325,7 @@ def _chunks(seq: list, n: int):
         yield seq[i:i + n]
 
 
-async def analyze(scan: ScanResult, llm: LLMFn = default_call, max_findings: int = 80) -> AnalyzeResult:
+async def _analyze_impl(scan: ScanResult, llm: LLMFn, max_findings: int) -> AnalyzeResult:
     order = {"critical": 0, "serious": 1, "moderate": 2, "minor": 3}
     findings = sorted(scan.findings, key=lambda f: order[f.severity])
     snap = scan.html_snapshot
@@ -329,11 +358,14 @@ async def analyze(scan: ScanResult, llm: LLMFn = default_call, max_findings: int
         for f, _, _ in chunk:
             errors.pop(f.id, None)
         images = [(f.id, f.crop_path) for f, _, has_img in chunk if has_img]
+        t0 = time.perf_counter()
         try:
             async with sem:
                 raw = await llm(SYSTEM, build_batch_prompt(chunk), images)
             got = parse_batch(raw)
+            _dbg(f"batch of {len(chunk)} ({len(images)} images): {len(got)} parsed, total {time.perf_counter() - t0:.1f}s")
         except Exception as e:
+            _dbg(f"batch of {len(chunk)} GAVE UP after {time.perf_counter() - t0:.1f}s")
             for f, _, _ in chunk:
                 errors[f.id] = f"LLM unavailable: {repr(e)[:160]}"
             return False
@@ -353,6 +385,7 @@ async def analyze(scan: ScanResult, llm: LLMFn = default_call, max_findings: int
     for _ in range(RETRY_ROUNDS):          # second pass: pause, split failed batches, retry
         if not pending:
             break
+        _dbg(f"second pass: {len(pending)} failed batch(es), pausing {RETRY_PAUSE}s")
         await asyncio.sleep(RETRY_PAUSE)
         smaller = []
         for c in pending:
@@ -395,3 +428,22 @@ async def analyze(scan: ScanResult, llm: LLMFn = default_call, max_findings: int
             analyses.append(_finish(f, snap, FALLBACK[f.category], None, "none", "low", True, "",
                                     errors.get(f.id, "No LLM result")))
     return AnalyzeResult(scan_id=scan.scan_id, analyses=analyses)
+
+
+async def analyze(scan: ScanResult, llm: Optional[LLMFn] = None, max_findings: int = 80) -> AnalyzeResult:
+    """Cached lookup -> live analysis within a time budget -> save if complete."""
+    llm = llm or default_call
+    use_cache = llm is default_call and not os.environ.get("ACCESSLENS_NO_CACHE")
+    if use_cache:
+        hit = cache.load(scan)
+        if hit:
+            _dbg("analysis served from cache")
+            return hit
+    token = _deadline.set(time.monotonic() + ANALYZE_BUDGET_S)
+    try:
+        res = await _analyze_impl(scan, llm, max_findings)
+    finally:
+        _deadline.reset(token)
+    if use_cache and scan.findings and cache.is_complete(res):
+        cache.save(scan, res)
+    return res

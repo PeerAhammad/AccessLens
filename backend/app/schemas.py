@@ -68,3 +68,5 @@ class FindingAnalysis(BaseModel):
 class AnalyzeResult(BaseModel):
     scan_id: str
     analyses: list[FindingAnalysis]
+    source: Literal["live", "cache"] = "live"
+    cached_at: Optional[str] = None

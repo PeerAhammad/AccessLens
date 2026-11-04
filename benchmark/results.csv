@@ -1,0 +1,2 @@
+url,findings,proposed,approved,resolved,approved_resolved,remaining,introduced,failed_ops,scan_s,analyze_s,verify_s,error
+https://www.w3.org/WAI/demos/bad/before/home.html,44,31,31,31,31,13,0,0,6.9,831.9,6.4,

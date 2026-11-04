@@ -1,0 +1,4 @@
+url,findings,proposed,approved,resolved,approved_resolved,remaining,introduced,failed_ops,scan_s,analyze_s,verify_s,error
+https://www.w3.org/WAI/demos/bad/before/home.html,44,42,42,42,42,2,0,0,13.4,209.9,3.9,
+https://www.w3.org/WAI/demos/bad/after/home.html,0,0,0,0,0,0,0,0,2.1,0.0,2.5,
+https://example.com,1,0,0,0,0,1,0,0,1.7,6.0,1.6,

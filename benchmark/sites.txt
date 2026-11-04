@@ -1,0 +1,6 @@
+# One URL per line (lines starting with # are ignored). Public pages only.
+# Mix of: intentionally inaccessible demos, real sites, and an accessible control.
+https://www.w3.org/WAI/demos/bad/before/home.html
+https://www.w3.org/WAI/demos/bad/after/home.html
+https://example.com
+# Add 3-4 real pages here: a college, a nonprofit, a municipal/government page, a small business:

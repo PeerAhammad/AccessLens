@@ -54,4 +54,28 @@ def test_504_is_retried():
         if len(calls) < 3:
             raise RuntimeError("504 DEADLINE_EXCEEDED")
         return "ok"
-    assert run(call_with_fallback(call, ["a"], delay=0)) == "ok"
+    assert run(call_with_fallback(call, ["a"], attempts=3, delay=0)) == "ok"
+
+
+def test_quota_error_moves_on_without_retrying():
+    seen = []
+    async def call(m):
+        seen.append(m)
+        if m == "a":
+            raise RuntimeError("429 RESOURCE_EXHAUSTED. quota")
+        return "ok"
+    assert run(call_with_fallback(call, ["a", "b"], delay=0)) == "ok"
+    assert seen == ["a", "b"]
+
+
+def test_time_budget_stops_retries():
+    import time
+    import app.llm as m
+    token = m._deadline.set(time.monotonic() - 1)
+    try:
+        async def call(model):
+            return "never"
+        with pytest.raises(RuntimeError, match="budget"):
+            run(call_with_fallback(call, ["a"], delay=0))
+    finally:
+        m._deadline.reset(token)

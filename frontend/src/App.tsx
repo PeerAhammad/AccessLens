@@ -15,6 +15,7 @@ export default function App() {
   const [scan, setScan] = useState<ScanResult | null>(null);
   const [analyses, setAnalyses] = useState<Map<string, FindingAnalysis>>(new Map());
   const [aiNote, setAiNote] = useState<string | null>(null);
+  const [cacheInfo, setCacheInfo] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
   const [approved, setApproved] = useState<Set<string>>(new Set());
   const [edits, setEdits] = useState<Record<string, string>>({});
@@ -30,7 +31,7 @@ export default function App() {
   );
 
   const reset = () => {
-    setPhase("idle"); setError(null); setScan(null); setAnalyses(new Map()); setAiNote(null);
+    setPhase("idle"); setError(null); setScan(null); setAnalyses(new Map()); setAiNote(null); setCacheInfo(null);
     setSelected(null); setApproved(new Set()); setEdits({}); setResult(null); setApplied([]);
   };
 
@@ -45,6 +46,7 @@ export default function App() {
       try {
         const a = await analyze(s.scan_id);
         setAnalyses(new Map(a.analyses.map((x) => [x.finding_id, x])));
+        setCacheInfo(a.source === "cache" ? a.cached_at ?? "earlier" : null);
       } catch (e) {
         setAiNote(`AI analysis was unavailable (${(e as Error).message}). Showing raw findings only.`);
       }
@@ -77,6 +79,7 @@ export default function App() {
       setAnalyses(next);
       setApproved((prev) => new Set([...prev].filter((id) => next.get(id)?.patch)));
       setAiNote(null);
+      setCacheInfo(a.source === "cache" ? a.cached_at ?? "earlier" : null);
     } catch (e) {
       setError((e as Error).message);
     }
@@ -188,6 +191,11 @@ export default function App() {
             </div>
 
             {aiNote && <p className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-200">{aiNote}</p>}
+            {cacheInfo && (
+              <p className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 p-3 text-sm text-cyan-100">
+                Loaded a saved AI analysis ({cacheInfo}) for this exact page state, so no live AI call was needed. Verification below still runs live.
+              </p>
+            )}
             {aiFailed > 0 && (
               <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-200">
                 <span>

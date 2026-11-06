@@ -1,0 +1,25 @@
+{
+ "scan_id": "4c243d06",
+ "analyses": [
+  {
+   "finding_id": "page-has-heading-one:al0",
+   "category": "heading",
+   "explanation": {
+    "what": "The web page does not contain a level-one heading (h1).",
+    "why": "A top-level heading provides an entry point and main topic structure for screen reader users navigating the page.",
+    "who": "Screen reader users who rely on heading structures to quickly understand and navigate to the main content of a page.",
+    "how": "Add a visible h1 element that accurately describes the main topic or page context."
+   },
+   "patch": null,
+   "patch_source": "none",
+   "confidence": "medium",
+   "needs_human_review": true,
+   "evidence": "axe_message specifies: 'Page must have a level-one heading'",
+   "original_html": "<html lang=\"en\" data-theme=\"dark\">",
+   "proposed_html": null,
+   "note": "Heading fixes change meaning; human review required"
+  }
+ ],
+ "source": "live",
+ "cached_at": "2026-11-06"
+}

@@ -11,6 +11,11 @@ OUT = pathlib.Path("scans")
 OUT.mkdir(exist_ok=True)
 # In a container the OS sandbox usually can't start; the container itself is the isolation boundary.
 LAUNCH_ARGS = ["--no-sandbox", "--disable-dev-shm-usage"] if os.environ.get("ACCESSLENS_NO_SANDBOX") else []
+if os.environ.get("ACCESSLENS_LOW_MEMORY"):   # for 512 MB hosts: fewer Chromium processes, no GPU/extension overhead
+    LAUNCH_ARGS += ["--disable-gpu", "--disable-extensions", "--disable-background-networking",
+                    "--disable-features=site-per-process,TranslateUI", "--renderer-process-limit=1",
+                    "--js-flags=--max-old-space-size=192"]
+NAV_TIMEOUT_MS = int(float(os.environ.get("ACCESSLENS_NAV_TIMEOUT_S", "20")) * 1000)   # raise on slow hosts
 
 RULES = {  # axe rule id -> our category
     "image-alt": "alt_text", "label": "form_label", "select-name": "form_label",
@@ -66,7 +71,7 @@ async def scan(url: str) -> ScanResult:
                 await route.abort()
         await page.route("**/*", guard)
 
-        await page.goto(url, wait_until="load", timeout=20000)
+        await page.goto(url, wait_until="load", timeout=NAV_TIMEOUT_MS)
         await page.evaluate(TAG_JS)
         results = await run_axe(page)
         shot = OUT / f"{scan_id}.png"

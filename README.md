@@ -100,3 +100,9 @@ Host `frontend/dist` on a Hugging Face *Static* Space, Netlify Drop, or GitHub P
 Light theme by default with a dark-mode toggle (preference stored in the browser). The interface was spot-checked with axe-core
 (WCAG 2.0/2.1 A and AA rules, including colour contrast) on the landing, review and report pages in both themes using sample data:
 no violations. This is an automated check only; it is not a full accessibility audit.
+
+### Render free tier (512 MB)
+Web Service -> Docker -> instance type Free -> health check path `/health`. Environment variables:
+`GEMINI_API_KEY` (secret), `ACCESSLENS_MODEL=gemini-3.1-flash-lite`, `ACCESSLENS_FALLBACK_MODELS=gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash`,
+`ACCESSLENS_MAX_BROWSERS=1`, `ACCESSLENS_LOW_MEMORY=1`, `ACCESSLENS_NAV_TIMEOUT_S=45`, `ACCESSLENS_RATE_PER_HOUR=20`.
+The free instance sleeps after ~15 minutes idle (first request then takes ~1 minute) and may run out of memory on heavy pages.

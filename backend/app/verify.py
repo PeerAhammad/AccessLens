@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
-from .scanner import run_axe, findings_from_axe, OUT, LAUNCH_ARGS
+from .scanner import run_axe, findings_from_axe, OUT, LAUNCH_ARGS, NAV_TIMEOUT_MS
 from .security import validate_url
 from .patches import PatchOp
 from .schemas import ScanResult, VerifyResult
@@ -54,7 +54,7 @@ async def verify(scan: ScanResult, patches: list[PatchOp]) -> VerifyResult:
                 await route.abort()
         await page.route("**/*", guard)
 
-        await page.set_content(html, wait_until="load", timeout=20000)
+        await page.set_content(html, wait_until="load", timeout=NAV_TIMEOUT_MS)
         before = findings_from_axe(await run_axe(page))
         b_shot = OUT / f"{scan.scan_id}_before.png"
         await page.screenshot(path=str(b_shot))

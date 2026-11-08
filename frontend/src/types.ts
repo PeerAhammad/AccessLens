@@ -62,4 +62,6 @@ export interface VerifyResult {
   failed_ops: string[];
   before_screenshot: string;
   after_screenshot: string;
+  live_only?: string[];
+  snapshot_only?: string[];
 }

@@ -30,6 +30,7 @@ class ScanResult(BaseModel):
     findings: list[Finding]
     screenshot_path: Optional[str] = None
     html_snapshot: str
+    final_url: Optional[str] = None   # URL after redirects; the isolated copy is served at this address
 
 
 class VerifyResult(BaseModel):
@@ -42,6 +43,8 @@ class VerifyResult(BaseModel):
     failed_ops: list[str]
     before_screenshot: str
     after_screenshot: str
+    live_only: list[str] = []       # issues in the live scan that the isolated copy did not reproduce
+    snapshot_only: list[str] = []   # issues the isolated copy found that the live scan did not
 
 
 class Explanation(BaseModel):

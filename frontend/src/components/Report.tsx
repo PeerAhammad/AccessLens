@@ -77,6 +77,14 @@ export default function Report({
         {result.introduced.length === 0 ? "No new violations were introduced." : `${result.introduced.length} new violation(s) appeared and need attention.`}
       </p>
 
+      {((result.live_only?.length ?? 0) > 0 || (result.snapshot_only?.length ?? 0) > 0) && (
+        <p className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
+          Heads up: the isolated copy did not match the live scan exactly ({result.live_only?.length ?? 0} live issue(s) not reproduced,{" "}
+          {result.snapshot_only?.length ?? 0} extra found). This can happen on pages that change after JavaScript runs, so treat these before/after numbers as
+          indicative and re-test the live page after applying fixes.
+        </p>
+      )}
+
       {result.failed_ops.length > 0 && (
         <p className="rounded-lg border border-amber-300 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">
           {result.failed_ops.length} change(s) could not be applied because their target element was not found.

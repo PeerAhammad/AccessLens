@@ -106,3 +106,8 @@ Web Service -> Docker -> instance type Free -> health check path `/health`. Envi
 `GEMINI_API_KEY` (secret), `ACCESSLENS_MODEL=gemini-3.1-flash-lite`, `ACCESSLENS_FALLBACK_MODELS=gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash`,
 `ACCESSLENS_MAX_BROWSERS=1`, `ACCESSLENS_LOW_MEMORY=1`, `ACCESSLENS_NAV_TIMEOUT_S=45`, `ACCESSLENS_RATE_PER_HOUR=20`.
 The free instance sleeps after ~15 minutes idle (first request then takes ~1 minute) and may run out of memory on heavy pages.
+
+## Verification fidelity
+The isolated copy is the scanned DOM with scripts, iframes and inline handlers removed, served at the page's real address (via request
+interception) so same-origin and `crossorigin` stylesheets, fonts and images load as on the live site. If the copy does not reproduce the live
+scan exactly (e.g. content that changes after JavaScript runs), the report shows a warning. `tests/test_verify_fidelity.py` guards this behavior.

@@ -76,6 +76,7 @@ async def scan(url: str) -> ScanResult:
         results = await run_axe(page)
         shot = OUT / f"{scan_id}.png"
         await page.screenshot(path=str(shot))
+        final_url = page.url
         findings = findings_from_axe(results)
         for f in findings[:80]:   # positions for the on-screenshot overlay (must precede element crops)
             try:
@@ -98,4 +99,4 @@ async def scan(url: str) -> ScanResult:
         html = await page.content()
         await browser.close()
     return ScanResult(scan_id=scan_id, url=url, findings=findings,
-                      screenshot_path=str(shot), html_snapshot=html)
+                      screenshot_path=str(shot), html_snapshot=html, final_url=final_url)

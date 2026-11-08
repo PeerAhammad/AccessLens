@@ -37,14 +37,23 @@ APPLY_JS = """(ops) => {
 
 
 async def verify(scan: ScanResult, patches: list[PatchOp]) -> VerifyResult:
-    html = sanitize(scan.html_snapshot, scan.url)
+    doc_url = scan.final_url or scan.url
+    html = sanitize(scan.html_snapshot, doc_url)
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(args=LAUNCH_ARGS)
         ctx = await browser.new_context(viewport={"width": 1280, "height": 800})
         page = await ctx.new_page()
 
+        served = {"done": False}
+
         async def guard(route):
-            u = route.request.url
+            req = route.request
+            u = req.url
+            # Serve our sanitized snapshot as the document at its REAL address, so the page keeps its
+            # origin and same-origin / crossorigin stylesheets, fonts and images load exactly as live.
+            if not served["done"] and req.resource_type == "document" and u == doc_url:
+                served["done"] = True
+                return await route.fulfill(status=200, content_type="text/html; charset=utf-8", body=html)
             if u.startswith("data:") or u.startswith("about:"):
                 return await route.continue_()
             try:
@@ -54,7 +63,7 @@ async def verify(scan: ScanResult, patches: list[PatchOp]) -> VerifyResult:
                 await route.abort()
         await page.route("**/*", guard)
 
-        await page.set_content(html, wait_until="load", timeout=NAV_TIMEOUT_MS)
+        await page.goto(doc_url, wait_until="load", timeout=NAV_TIMEOUT_MS)
         before = findings_from_axe(await run_axe(page))
         b_shot = OUT / f"{scan.scan_id}_before.png"
         await page.screenshot(path=str(b_shot))
@@ -66,7 +75,8 @@ async def verify(scan: ScanResult, patches: list[PatchOp]) -> VerifyResult:
         await browser.close()
 
     b, a = {f.id for f in before}, {f.id for f in after}
-    return VerifyResult(
+    live = {f.id for f in scan.findings}
+    return VerifyResult(live_only=sorted(live - b), snapshot_only=sorted(b - live),
         scan_id=scan.scan_id, before_count=len(b), after_count=len(a),
         resolved=sorted(b - a), remaining=sorted(b & a), introduced=sorted(a - b),
         failed_ops=failed, before_screenshot=str(b_shot), after_screenshot=str(a_shot))
